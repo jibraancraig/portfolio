@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Jibraan Craig - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Portfolio/Resume Page -->
+    <div class="second-screen" id="portfolio-content" style="opacity: 0;">
+        <div class="container">
+            <!-- Header Section -->
+            <header class="profile-header">
+                <h1 class="name">Jibraan Craig</h1>
+                <p class="subtitle" id="subtitle">Mathematician</p>
+            </header>
+
+            <!-- About Section -->
+            <section class="section about-section" id="about-section">
+                <h2 class="section-title">About</h2>
+                <p class="about-text">
+                    I am a passionate mathematician, investor, and financial analyst. Born in Birmingham, UK and raised in London. I have completed multiple work experience programs for top-tier firms (e.g Bank of America, J.P Morgan etc.) I have partial experience in Python and HTML/CSS. Which I use to program past-financial models and software for practice.
+                </p>
+            </section>
+
+            <!-- Work Experience Section -->
+            <section class="section">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="date-column">
+                            <span class="date">06/2025</span>
+                        </div>
+                        <div class="content-column">
+                            <div class="experience-title-row">
+                                <p class="experience-title">Cybersecurity Simulation at mastercard</p>
+                                <a href="certificates/mastercard-cybersecurity.pdf" target="_blank" class="open-certificate">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="date-column">
+                            <span class="date">06/2025</span>
+                        </div>
+                        <div class="content-column">
+                            <div class="experience-title-row">
+                                <p class="experience-title">Standard Chartered Financial Markets Sales</p>
+                                <a href="certificates/standard-chartered.pdf" target="_blank" class="open-certificate">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="date-column">
+                            <span class="date">04/2025</span>
+                        </div>
+                        <div class="content-column">
+                            <div class="experience-title-row">
+                                <p class="experience-title">J.P. Morgan Investment Banking</p>
+                                <a href="certificates/jp-morgan.pdf" target="_blank" class="open-certificate">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="date-column">
+                            <span class="date">04/2025</span>
+                        </div>
+                        <div class="content-column">
+                            <div class="experience-title-row">
+                                <p class="experience-title">Bank of America Investment Banking</p>
+                                <a href="certificates/bank-of-america.pdf" target="_blank" class="open-certificate">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="date-column">
+                            <span class="date">03/2025</span>
+                        </div>
+                        <div class="content-column">
+                            <div class="experience-title-row">
+                                <p class="experience-title">Skoolmaths Proofreader and Technical Analyst</p>
+                                <a href="https://skoolmaths.com/" target="_blank" class="open-certificate">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="date-column">
+                            <span class="date">02/2024</span>
+                        </div>
+                        <div class="content-column">
+                            <div class="experience-title-row">
+                                <p class="experience-title">Kwanda Marketing Researcher and Assistant</p>
+                                <a href="https://kwanda.co/" target="_blank" class="open-certificate">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-list">
+                    <div class="education-item">
+                        <div class="date-column">
+                            <span class="date">2025 - 2027</span>
+                        </div>
+                        <div class="content-column">
+                            <div class="education-title-row">
+                                <p class="education-title">Christ The King Aquinas</p>
+                                <button class="show-details" data-school="ctk">Subjects</button>
+                            </div>
+                            <div class="subjects-container" id="subjects-ctk" style="display: none;">
+                                <div class="subjects-list">
+                                    <div class="subject-item">
+                                        <span class="subject-name">Mathematics</span>
+                                        <span class="subject-grade">N/A</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">Business</span>
+                                        <span class="subject-grade">N/A</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">Extended Project Qualification</span>
+                                        <span class="subject-grade">N/A</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">Economics</span>
+                                        <span class="subject-grade">N/A</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="date-column">
+                            <span class="date">2019 - 2025</span>
+                        </div>
+                        <div class="content-column">
+                            <div class="education-title-row">
+                                <p class="education-title">St Matthew Academy</p>
+                                <button class="show-details" data-school="sma">Subjects</button>
+                            </div>
+                            <div class="subjects-container" id="subjects-sma" style="display: none;">
+                                <div class="subjects-list">
+                                    <div class="subject-item">
+                                        <span class="subject-name">Mathematics</span>
+                                        <span class="subject-grade">7</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">English Language</span>
+                                        <span class="subject-grade">5</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">English Literature</span>
+                                        <span class="subject-grade">5</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">Combined Science</span>
+                                        <span class="subject-grade">7-6</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">Religious Education</span>
+                                        <span class="subject-grade">6</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">Geography</span>
+                                        <span class="subject-grade">6</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">Spanish</span>
+                                        <span class="subject-grade">7</span>
+                                    </div>
+                                    <div class="subject-item">
+                                        <span class="subject-name">Film Studies</span>
+                                        <span class="subject-grade">6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <p class="skill-name">Financial Analysis</p>
+                        <div class="skill-slider-container">
+                            <div class="skill-slider">
+                                <div class="skill-slider-fill" style="width: 65%"></div>
+                            </div>
+                            <span class="skill-percentage">65%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <p class="skill-name">DCF</p>
+                        <div class="skill-slider-container">
+                            <div class="skill-slider">
+                                <div class="skill-slider-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="skill-percentage">45%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <p class="skill-name">Mathematics</p>
+                        <div class="skill-slider-container">
+                            <div class="skill-slider">
+                                <div class="skill-slider-fill" style="width: 60%"></div>
+                            </div>
+                            <span class="skill-percentage">60%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <p class="skill-name">Data Analysis</p>
+                        <div class="skill-slider-container">
+                            <div class="skill-slider">
+                                <div class="skill-slider-fill" style="width: 80%"></div>
+                            </div>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <p class="skill-name">Powerpoint</p>
+                        <div class="skill-slider-container">
+                            <div class="skill-slider">
+                                <div class="skill-slider-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <p class="skill-name">Excel</p>
+                        <div class="skill-slider-container">
+                            <div class="skill-slider">
+                                <div class="skill-slider-fill" style="width: 70%"></div>
+                            </div>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Social Section -->
+            <section class="section">
+                <h2 class="section-title">Social</h2>
+                <div class="social-list">
+                    <div class="social-item">
+                        <div class="date-column">
+                            <span class="social-label">LinkedIn</span>
+                        </div>
+                        <div class="content-column">
+                            <a href="https://www.linkedin.com/in/jibraan-craig-451812303/" target="_blank" class="open-certificate">Open</a>
+                        </div>
+                    </div>
+                    <div class="social-item">
+                        <div class="date-column">
+                            <span class="social-label">Email</span>
+                        </div>
+                        <div class="content-column">
+                            <p class="social-value">jibraancraig@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="social-item">
+                        <div class="date-column">
+                            <span class="social-label">Phone</span>
+                        </div>
+                        <div class="content-column">
+                            <p class="social-value">+44 7442 699404</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Form Section -->
+            <section class="section">
+                <h2 class="section-title">Send me a message</h2>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send Message</button>
+                    <div class="form-message" id="form-message"></div>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="main-footer" style="opacity: 0;">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p class="footer-text">© 2025 Jibraan Craig. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://www.linkedin.com/in/jibraan-craig-451812303/" target="_blank" class="footer-link">LinkedIn</a>
+                    <a href="mailto:jibraancraig@gmail.com" class="footer-link">Email</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading screen and fade-in animation, plus other functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Loading screen functionality
+            const loadingScreen = document.getElementById('loading-screen');
+            const portfolioContent = document.getElementById('portfolio-content');
+            const mainFooter = document.getElementById('main-footer');
+            
+            // Check for reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const fadeDuration = prefersReducedMotion ? 0 : 0.5;
+            const fadeInDuration = prefersReducedMotion ? 0 : 0.6;
+            
+            // After 2 seconds, fade out loading screen and fade in portfolio
+            setTimeout(function() {
+                // Fade out loading screen
+                if (!prefersReducedMotion) {
+                    loadingScreen.style.transition = 'opacity ' + fadeDuration + 's ease-out';
+                }
+                loadingScreen.style.opacity = '0';
+                
+                // After fade out starts, fade in portfolio content
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                    
+                    // Fade in content and footer
+                    if (!prefersReducedMotion) {
+                        portfolioContent.style.transition = 'opacity ' + fadeInDuration + 's ease-in';
+                        if (mainFooter) {
+                            mainFooter.style.transition = 'opacity ' + fadeInDuration + 's ease-in';
+                        }
+                    }
+                    
+                    portfolioContent.style.opacity = '1';
+                    
+                    if (mainFooter) {
+                        mainFooter.style.opacity = '1';
+                    }
+                }, prefersReducedMotion ? 0 : 500); // Wait for loading screen fade out to complete
+            }, 2000); // Show loading screen for 2 seconds
+
+            // Subtitle text cycling animation
+            const subtitle = document.getElementById('subtitle');
+            const subtitleTexts = ['Mathematician', 'Investor', 'Aspiring Investment Banker'];
+            let currentIndex = 0;
+            let subtitleInterval = null;
+            
+            if (subtitle) {
+                // Wait for portfolio to fade in before starting animation
+                setTimeout(function() {
+                    const prefersReducedMotionAnim = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    const fadeSpeed = prefersReducedMotionAnim ? 0 : 0.5;
+                    const displayDuration = prefersReducedMotionAnim ? 2000 : 3000; // Show each text for 3 seconds
+                    
+                    function cycleSubtitle() {
+                        // Fade out
+                        subtitle.style.transition = 'opacity ' + fadeSpeed + 's ease-out';
+                        subtitle.style.opacity = '0';
+                        
+                        setTimeout(function() {
+                            // Change text
+                            currentIndex = (currentIndex + 1) % subtitleTexts.length;
+                            subtitle.textContent = subtitleTexts[currentIndex];
+                            
+                            // Fade in
+                            setTimeout(function() {
+                                subtitle.style.transition = 'opacity ' + fadeSpeed + 's ease-in';
+                                subtitle.style.opacity = '0.75';
+                            }, 50);
+                        }, prefersReducedMotionAnim ? 0 : fadeSpeed * 1000);
+                    }
+                    
+                    // Start cycling after initial display
+                    subtitleInterval = setInterval(cycleSubtitle, displayDuration);
+                }, prefersReducedMotion ? 0 : 2600); // Wait for portfolio fade-in to complete
+            }
+
+            // Toggle subjects visibility when Subjects button is clicked
+            const subjectButtons = document.querySelectorAll('.show-details[data-school]');
+            
+            subjectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const schoolId = this.getAttribute('data-school');
+                    const subjectsContainer = document.getElementById('subjects-' + schoolId);
+                    
+                    if (subjectsContainer) {
+                        if (subjectsContainer.style.display === 'none') {
+                            subjectsContainer.style.display = 'block';
+                            this.textContent = 'Hide subjects';
+                        } else {
+                            subjectsContainer.style.display = 'none';
+                            this.textContent = 'Subjects';
+                        }
+                    }
+                });
+            });
+
+            // Contact form submission
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitButton = contactForm.querySelector('.form-submit');
+                    const formData = new FormData(contactForm);
+                    
+                    // Disable submit button
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Sending...';
+                    
+                    // Option 1: Using EmailJS (requires setup - see instructions below)
+                    // Uncomment and configure if using EmailJS:
+                    /*
+                    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                        .then(function() {
+                            formMessage.textContent = 'Message sent successfully!';
+                            formMessage.className = 'form-message success';
+                            contactForm.reset();
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'Send Message';
+                        }, function(error) {
+                            formMessage.textContent = 'Failed to send message. Please try again or email directly at jibraancraig@gmail.com';
+                            formMessage.className = 'form-message error';
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'Send Message';
+                        });
+                    */
+                    
+                    // Option 2: Using mailto as fallback (works immediately)
+                    const name = formData.get('name');
+                    const email = formData.get('email');
+                    const subject = formData.get('subject');
+                    const message = formData.get('message');
+                    
+                    const mailtoLink = `mailto:jibraancraig@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+                    window.location.href = mailtoLink;
+                    
+                    // Show success message
+                    formMessage.textContent = 'Opening your email client...';
+                    formMessage.className = 'form-message success';
+                    contactForm.reset();
+                    
+                    // Reset button after a delay
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Message';
+                        formMessage.style.display = 'none';
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
