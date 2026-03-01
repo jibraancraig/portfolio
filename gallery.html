@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Gallery — Jibraan Craig</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       TOKENS
+       ============================================ */
+    :root {
+      --bg: #FAF7F2;
+      --bg-alt: #F1EDE6;
+      --surface: hwb(0 100% 0%);
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --text-muted: #999;
+      --border: #e5e1da;
+      --font: 'Albert Sans', system-ui, -apple-system, sans-serif;
+      --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+      --mono: 'Consolas', 'Courier New', monospace;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --max-w: 1000px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #141414;
+      --bg-alt: #1c1c1c;
+      --surface: #222;
+      --text: #ededed;
+      --text-secondary: #aaa;
+      --text-muted: #666;
+      --border: #2e2e2e;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; cursor: none; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      cursor: none;
+      transition: background 0.35s var(--ease), color 0.35s var(--ease);
+    }
+    a { color: inherit; text-decoration: none; cursor: none; }
+    button { cursor: none; }
+    strong { color: var(--text); font-weight: 600; }
+
+    .serif-italic {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================
+       CUSTOM CURSOR
+       ============================================ */
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s var(--ease), height 0.25s var(--ease), background 0.25s var(--ease), border 0.25s var(--ease), border-radius 0.25s var(--ease);
+    }
+
+    .cursor.hovering {
+      width: 18px;
+      height: 18px;
+      background: transparent;
+      border: 2px solid #1a1a1a;
+    }
+
+    [data-theme="dark"] .cursor {
+      background: #ededed;
+    }
+
+    [data-theme="dark"] .cursor.hovering {
+      background: transparent;
+      border-color: #ededed;
+    }
+
+    /* ============================================
+       CURSOR TOOLTIP (expanded box on gallery hover)
+       ============================================ */
+    .cursor-tooltip {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      width: 280px;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      opacity: 0;
+      transform: translate(20px, 20px);
+      transition: opacity 0.25s var(--ease);
+    }
+
+    .cursor-tooltip.visible {
+      opacity: 1;
+    }
+
+    [data-theme="dark"] .cursor-tooltip {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+
+    .cursor-tooltip h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .cursor-tooltip p {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* ============================================
+       NAV
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 20px 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.35s var(--ease);
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: opacity 0.2s;
+    }
+
+    .nav-back:hover { opacity: 0.6; }
+
+    .nav-back .arrow-left {
+      font-size: 1.1rem;
+    }
+
+    .nav-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ============================================
+       PAGE CONTENT
+       ============================================ */
+    .page {
+      padding: 120px 0 80px;
+    }
+
+    .page-heading {
+      font-family: var(--font);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .page-sub {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 56px;
+      max-width: 540px;
+    }
+
+    /* ============================================
+       GALLERY GRID
+       ============================================ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    [data-theme="dark"] .gallery-item:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+    }
+
+    .gallery-label {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .gallery-label h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .gallery-label span {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ============================================
+       THEME TOGGLE
+       ============================================ */
+    .theme-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 200;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.35s var(--ease), border-color 0.35s var(--ease);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .t-icon { width: 18px; height: 18px; }
+    .t-icon--sun { display: block; }
+    .t-icon--moon { display: none; }
+    [data-theme="dark"] .t-icon--sun { display: none; }
+    [data-theme="dark"] .t-icon--moon { display: block; }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+      .page { padding: 100px 0 60px; }
+
+      .cursor,
+      .cursor-tooltip { display: none !important; }
+
+      html, body, a, button { cursor: auto; }
+
+      .theme-toggle {
+        bottom: 16px;
+        right: 16px;
+        width: 36px;
+        height: 36px;
+      }
+
+      .t-icon { width: 16px; height: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Cursor Tooltip -->
+  <div class="cursor-tooltip" id="cursorTooltip">
+    <h4 id="tooltipTitle"></h4>
+    <p id="tooltipDesc"></p>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-back"><span class="arrow-left">&larr;</span> Back</a>
+      <span class="nav-title">Model Gallery</span>
+    </div>
+  </nav>
+
+  <!-- Gallery -->
+  <section class="page">
+    <div class="container">
+      <h1 class="page-heading"><span class="serif-italic">Financial Model Gallery</span></h1>
+      <p class="page-sub">Python-built quantitative models by me — hover over each screenshot to learn more about the model and its use.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item"
+             data-title="Monte Carlo Simulation"
+             data-desc="A stochastic model that runs thousands of randomised price path simulations to estimate the probability distribution of future portfolio returns. Essential for stress-testing strategies and understanding tail risk under uncertainty.">
+          <img src="gallery/montecarlo.png" alt="Monte Carlo Simulation">
+          <div class="gallery-label">
+            <h3>Monte Carlo Simulation</h3>
+            <span>Python</span>
+          </div>
+        </div>
+
+        <div class="gallery-item"
+             data-title="Mean-Variance Optimisation"
+             data-desc="An implementation of Markowitz's Modern Portfolio Theory that computes the efficient frontier — the set of portfolios offering the highest expected return for each level of risk. Used to find the optimal asset allocation across a given universe of securities.">
+          <img src="gallery/meanvariance.png" alt="Mean-Variance Optimisation">
+          <div class="gallery-label">
+            <h3>Mean-Variance Optimisation</h3>
+            <span>Python</span>
+          </div>
+        </div>
+
+        <div class="gallery-item"
+             data-title="GARCH Volatility Model"
+             data-desc="A Generalised Autoregressive Conditional Heteroskedasticity model that captures volatility clustering in financial time series. Critical for options pricing, risk management, and understanding how market turbulence evolves over time.">
+          <img src="gallery/garch.png" alt="GARCH Volatility Model">
+          <div class="gallery-label">
+            <h3>GARCH Volatility Model</h3>
+            <span>Python</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>2026 &copy; Jibraan Craig</p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg class="t-icon t-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+    <svg class="t-icon t-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
+
+  <script>
+    // ============================================
+    // CUSTOM CURSOR
+    // ============================================
+    const cursor = document.getElementById('cursor');
+    const tooltip = document.getElementById('cursorTooltip');
+    const tooltipTitle = document.getElementById('tooltipTitle');
+    const tooltipDesc = document.getElementById('tooltipDesc');
+
+    let mouseX = 0, mouseY = 0;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+
+      // Position tooltip offset from cursor, keep within viewport
+      const tw = 280;
+      const th = tooltip.offsetHeight || 160;
+      let tx = mouseX + 20;
+      let ty = mouseY + 20;
+
+      if (tx + tw > window.innerWidth - 16) tx = mouseX - tw - 20;
+      if (ty + th > window.innerHeight - 16) ty = mouseY - th - 20;
+
+      tooltip.style.left = tx + 'px';
+      tooltip.style.top = ty + 'px';
+    });
+
+    document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+    document.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0';
+      tooltip.classList.remove('visible');
+    });
+
+    // Link/button hover -> hollow cursor
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+
+    // Gallery item hover -> show tooltip
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        tooltipTitle.textContent = item.dataset.title;
+        tooltipDesc.textContent = item.dataset.desc;
+        tooltip.classList.add('visible');
+        cursor.style.opacity = '0';
+      });
+
+      item.addEventListener('mouseleave', () => {
+        tooltip.classList.remove('visible');
+        cursor.style.opacity = '1';
+      });
+    });
+
+    // ============================================
+    // THEME TOGGLE
+    // ============================================
+    const toggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+
+    toggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  </script>
+</body>
+</html>
